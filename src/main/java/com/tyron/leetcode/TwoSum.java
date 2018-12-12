@@ -6,7 +6,6 @@ package com.tyron.leetcode;
  * @Auther: tyron
  * @Date: 2018/12/12
  */
-
 public class TwoSum {
     public static void main(String[] args) {
         int[] nums = {2, 7, 11, 15};
