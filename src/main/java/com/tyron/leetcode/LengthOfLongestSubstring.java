@@ -14,6 +14,8 @@ public class LengthOfLongestSubstring {
         String str = "abaaddcabscs";
         int length1 = lengthOfLongestSubstring1(str);
         System.out.println(length1);
+        int length2 = lengthOfLongestSubstring2(str);
+        System.out.println(length2);
     }
 
     /**
@@ -39,6 +41,32 @@ public class LengthOfLongestSubstring {
             }
         }
         return maxLength;
+    }
+
+    /**
+     * 利用滑动窗口的概念，https://github.com/MisterBooo/LeetCodeAnimation中的动画描述的很生动，另外http://www.cnblogs.com/grandyang/p/4480780.html将问题描述得很通透
+     * 只需要维护一个的“窗口”，用set来维护。
+     * 过程：①窗口从左边界遍历，依次滑动到右边界，一次窗口滑动过程中，分两种情况
+     *          1) 下一个字符不包含在窗口中，则左边界不变，扩大右边界；
+     *          2) 下一个字符包含在窗口中，将左边界移动到窗口中重复元素的下一个元素，并扩大右边界
+     *       ②定义变量保存最长窗口的长度
+     *
+     * @param str 目标字符串
+     * @return 最长窗口的长度
+     */
+    private static int lengthOfLongestSubstring2(String str) {
+        Set<Character> set = new HashSet<Character>();
+        // res存放最长窗口长度
+        int res = 0, left = 0, right = 0;
+        while (right < str.length()) {
+            if (!set.contains(str.charAt(right))) {
+                set.add(str.charAt(right++));
+                res = Math.max(res, set.size());
+            } else {
+                set.remove(str.charAt(left++));
+            }
+        }
+        return res;
     }
 
     /**
