@@ -18,7 +18,7 @@ public class BubbleSort {
 
         System.out.println("");
         // 待排序数组
-        int[] arr_two = {5, 17, 9, 12, 11, 45, 1, 51, 111, 245, 4, 5, 45, 45, 414, 456};
+        int[] arr_two = {5, 17, 9, 12, 11, 45, 1, 51, 111, 245, 4, 5, 45, 45, 314, 456};
         // 冒泡排序（二）
         int count_two = bubbleSort_two(arr_two);
         // 输出次数
